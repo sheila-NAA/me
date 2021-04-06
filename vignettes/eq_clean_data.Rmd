@@ -41,7 +41,7 @@ the following characteristics:
 
  - latitude and longitude columns converted to numeric class
 
- - use the funciton `eq_location_clean()` (from the **devrcap** package
+ - use the funciton `eq_location_clean()` (from the **buildingpackage** package
    too) to clean the _location_name_ column by stripping out the country
    name (including the colon) and converting names to title case (as
    opposed to all caps).
@@ -53,7 +53,7 @@ data_cleaned <- devrcap::eq_clean_data(noaa)
 DT::datatable(data_cleaned)
 ```
 
-Using the ggplot2 geom `geom_timeline()` provided by **devrcap**,
+Using the ggplot2 geom `geom_timeline()` provided by **buildingpackage**,
 we can use the cleaned data to plot time lines of earthquakes
 both overall and by group (e.g., country).
 
