@@ -1,21 +1,27 @@
-# me
+---
+title: "eq_clean_data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{eq_clean_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of buildingpackage is to show
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+Function and data from **buildingpackage** package would be useful to show
 information about history of earthquake around the world.
 
 To do that, it provide a raw version of the
 [NOAA Significant Earthquake DatabaseD](https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1).
-
-## Installation
-
-You can install the released version of buildingpackage from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("buildingpackage")'=
-
+```{r setup}
+library(buildingpackage)
+```
+```{r}
 requireNamespace("DT", quietly = TRUE)
 requireNamespace("lubridate", quietly = TRUE)
 requireNamespace("ggplot2", quietly = TRUE)
@@ -24,14 +30,6 @@ library(devrcap)
 DT::datatable(noaa)
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(buildingpackage)
-## basic example code
-```
 The first function implemented would be used to clean this database and
 prepare it for further analyses and visualizations.
 
@@ -43,7 +41,7 @@ the following characteristics:
 
  - latitude and longitude columns converted to numeric class
 
- - use the funciton `eq_location_clean()` (from the **devrcap** package
+ - use the funciton `eq_location_clean()` (from the **buildingpackage** package
    too) to clean the _location_name_ column by stripping out the country
    name (including the colon) and converting names to title case (as
    opposed to all caps).
@@ -51,11 +49,11 @@ the following characteristics:
  - set all the column names to lowercase
 
 ```{r}
-data_cleaned <- devrcap::eq_clean_data(noaa) 
+data_cleaned <- buildingpackage::eq_clean_data(noaa) 
 DT::datatable(data_cleaned)
 ```
 
-Using the ggplot2 geom `geom_timeline()` provided by **devrcap**,
+Using the ggplot2 geom `geom_timeline()` provided by **buildingpackage**,
 we can use the cleaned data to plot time lines of earthquakes
 both overall and by group (e.g., country).
 
