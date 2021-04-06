@@ -1,0 +1,20 @@
+Package: buildingpackage
+Title: Cleaning Raw Data
+Version: 0.0.0.1000
+Date: 06/04/2021
+Authors@R: 
+    person(given = "Sheila",
+           family = "Amoafo",
+           role = c("aut", "cre"))
+Description: This package cleans a raw dataframe into understandable and a
+    neat dataframe
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+package: buildingpackage
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
