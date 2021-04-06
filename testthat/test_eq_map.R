@@ -1,19 +1,14 @@
-context("test-eq_map")
+context('test map is created')
 
-map_output <- noaa %>%
-  eq_clean_data %>%
-  dplyr::filter(
-    country == "MEXICO",
-    lubridate::year(date) >= 2000
-  ) %>%
-  eq_map("date")
+test_that('map is created ', {
+  qs <- eq_load_clean_data()
 
+  qs <- qs %>%
+    dplyr::filter(COUNTRY == 'JAPAN') %>%
+    dplyr::filter(lubridate::year(DATE) >= 2000)
 
-test_that("correct class", {
-  expect_is(map_output, "leaflet")
-})
+  map <- eq_map(qs, annot_col = 'DATE')
 
-
-test_that("error on wrong data", {
-  expect_error(eq_map(mtcars, "foo"), "Please, provide correct data")
+  expect_s3_class(map, 'leaflet')
+  expect_s3_class(map, 'htmlwidget')
 })
